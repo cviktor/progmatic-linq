@@ -72,7 +72,7 @@ namespace Basics
             //Console.WriteLine(moved);
 
             var numbers = new List<int> { 2, 3, 4, 5, 6, 7, 8 };
-            var evenNumbers = Filter(numbers, IsEven);
+            var evenNumbers = Filter(numbers, IsEven, 4);
             foreach (var n in evenNumbers)
             {
                 Console.WriteLine(n);
@@ -80,19 +80,19 @@ namespace Basics
             Console.ReadKey();
         }
 
-        static bool IsEven(int n)
+        static bool IsEven(int n, int min)
         {
-            return n % 2 == 0;
+            return n > min && n % 2 == 0;
         }
 
         //FilterDelegate helyett megfelel a Func<int, bool>
-        static List<int> Filter(List<int> numbers, Func<int, bool> filter)
+        static List<int> Filter(List<int> numbers, Func<int, int, bool> filter, int minimum)
         {
             var result = new List<int>();
 
             foreach (var n in numbers)
             {
-                if (filter(n))
+                if (filter(n, minimum))
                 {
                     result.Add(n);
                 }
