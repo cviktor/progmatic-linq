@@ -13,6 +13,8 @@ namespace Basics
             var x = 2;
             var line = Console.ReadLine(); //metódus visszatérési érték tárolására nem mindig preferálják, van hogy inkább ki kell írni
 
+
+
             Console.ReadKey();
         }
 
