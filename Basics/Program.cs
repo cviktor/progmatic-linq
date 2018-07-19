@@ -72,14 +72,27 @@ namespace Basics
             //Console.WriteLine(moved);
 
             var numbers = new List<int> { 2, 3, 4, 5, 6, 7, 8 };
+
+            //Megadhatom régi nevesített metódus szintaktikával
             //Action<int> writerDel = new Action<int>(WriteNumber);
+
+            //Megadhatom a nevesített metódust
             //Action<int> writerDel = WriteNumber; //felsõ sor egyszerûsítése
 
-            //Anonymus metódussal is megoldhatom az elõzõ részt
-            Action<int> writerDel = delegate (int n)
+            //Anonymus metódussal is megoldhatom az elõzõ részt ilyenkor nem kell a WriteNumber
+            //hanem magát a metódust definiálom itt
+            //Action<int> writerDel = delegate (int n)
+            //{
+            //    Console.WriteLine("Anonymus metódus vagyok: " + n);
+            //};
+
+            //Megadhatom lambda kifejezéssel ami hasonló mint az elõzõ megoldás
+            //csak egyszerûbb az írásmódja
+            Action<int> writerDel = (n) =>
             {
-                Console.WriteLine("Anonymus metódus vagyok: " + n);
+                Console.WriteLine("Lambda vagyok: " + n);
             };
+
             //writerDel(132423); //ez gyakorlatilag a WriteNumber(132423);
 
             //Func<int, int, bool> evenDel = IsEven;
