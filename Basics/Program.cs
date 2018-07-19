@@ -98,11 +98,28 @@ namespace Basics
             //Func<int, int, bool> evenDel = IsEven;
             //bool result = evenDel(4, 3);
             //Console.WriteLine(result);
-            var evenNumbers = Filter(numbers, IsEven, 4, writerDel);
+            //var evenNumbers = Filter(numbers, IsEven, 4, writerDel);
+
+            //A híváskor paramétereként definiáljuk magát a metódust amit futtatni akarunk
+            var evenNumbers = Filter(numbers, (n, min) =>
+            {
+                return n > min && n % 2 == 0;
+            }, 
+            4, writerDel);
+
             foreach (var n in evenNumbers)
             {
                 Console.WriteLine(n);
             }
+
+            //Páratlan számokra ugyanez
+            var oddNumbers = Filter(numbers, (n, min) =>
+            {
+                return n >= min && n % 2 != 0;
+            }, 3, (j) =>
+            {
+                Console.WriteLine("Éppen {0}-t nézem", j);
+            });
             Console.ReadKey();
         }
 
