@@ -73,17 +73,23 @@ namespace Basics
 
             var numbers = new List<int> { 2, 3, 4, 5, 6, 7, 8 };
             //Action<int> writerDel = new Action<int>(WriteNumber);
-            Action<int> writerDel = WriteNumber; //felsõ sor egyszerûsítése
-            writerDel(132423); //ez gyakorlatilag a WriteNumber(132423);
+            //Action<int> writerDel = WriteNumber; //felsõ sor egyszerûsítése
 
-            Func<int, int, bool> evenDel = IsEven;
-            bool result = evenDel(4, 3);
-            Console.WriteLine(result);
-            //var evenNumbers = Filter(numbers, IsEven, 4, writerDel);
-            //foreach (var n in evenNumbers)
-            //{
-            //    Console.WriteLine(n);
-            //}
+            //Anonymus metódussal is megoldhatom az elõzõ részt
+            Action<int> writerDel = delegate (int n)
+            {
+                Console.WriteLine("Anonymus metódus vagyok: " + n);
+            };
+            //writerDel(132423); //ez gyakorlatilag a WriteNumber(132423);
+
+            //Func<int, int, bool> evenDel = IsEven;
+            //bool result = evenDel(4, 3);
+            //Console.WriteLine(result);
+            var evenNumbers = Filter(numbers, IsEven, 4, writerDel);
+            foreach (var n in evenNumbers)
+            {
+                Console.WriteLine(n);
+            }
             Console.ReadKey();
         }
 
