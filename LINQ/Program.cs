@@ -20,7 +20,18 @@ namespace LINQ
             //    Console.WriteLine(number);
             //}
 
-            IEnumerable<string> stringNumbers = numbers.Select((n) => n + " szám");
+            //IEnumerable<string> stringNumbers = numbers.Select((n) => (n % 2 == 0) ? (n + " páros szám") : (n + " páratlan szám"));
+            IEnumerable<string> stringNumbers = numbers.Select((n) =>
+            {
+                if (n % 2 == 0)
+                {
+                    return n + " páros szám";
+                }
+                else
+                {
+                    return n + " páratlan szám";
+                }
+            });
             foreach (string numberText in stringNumbers)
             {
                 Console.WriteLine(numberText);
