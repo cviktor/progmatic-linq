@@ -85,7 +85,8 @@ namespace Basics
             return n % 2 == 0;
         }
 
-        static List<int> Filter(List<int> numbers, FilterDelegate filter)
+        //FilterDelegate helyett megfelel a Func<int, bool>
+        static List<int> Filter(List<int> numbers, Func<int, bool> filter)
         {
             var result = new List<int>();
 
