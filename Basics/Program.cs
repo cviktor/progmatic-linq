@@ -104,7 +104,7 @@ namespace Basics
             var evenNumbers = Filter(numbers, (n, min) =>
             {
                 return n > min && n % 2 == 0;
-            }, 
+            },
             4, writerDel);
 
             foreach (var n in evenNumbers)
@@ -112,14 +112,12 @@ namespace Basics
                 Console.WriteLine(n);
             }
 
-            //Páratlan számokra ugyanez
-            var oddNumbers = Filter(numbers, (n, min) =>
-            {
-                return n >= min && n % 2 != 0;
-            }, 3, (j) =>
-            {
-                Console.WriteLine("Éppen {0}-t nézem", j);
-            });
+            //Páratlan számokra ugyanez, minden paramétere a filternek külön sorba szerepel
+            var oddNumbers = Filter(numbers, //bemenõ számok listája
+                (n, min) => n >= min && n % 2 != 0, //a metódus ami alapján szûrünk (páratlan min-nél nagyobb egyenlõ számok)
+                3, //minimum szám
+                (j) => Console.WriteLine("Éppen {0}-t nézem", j) //a metódus amivel kiírjuk éppen mit vizsgálunk
+            );
             Console.ReadKey();
         }
 
