@@ -85,8 +85,6 @@ namespace Basics
             Console.WriteLine("Éppen a {0} számot vizsgáljuk", n);
         }
 
-
-
         static bool IsEven(int n, int min)
         {
             return n > min && n % 2 == 0;
@@ -96,7 +94,7 @@ namespace Basics
         static List<int> Filter(List<int> numbers, 
             Func<int, int, bool> filter, 
             int minimum, 
-            Action<int> write)
+            Action<int> write) //delegate formába így kéne felvenni: delegate void WriteDelegate(int x);
         {
             var result = new List<int>();
 
