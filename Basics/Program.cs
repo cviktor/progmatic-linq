@@ -21,7 +21,15 @@ namespace Basics
                 Age = 31,
                 Salary = 1000
             };
-            
+
+            //var persons = new List<Person>();
+            //persons.Add(p);
+
+            var persons = new List<Person>()
+            {
+                p,
+                new Person("Géza"){Age = 22, Salary = 3000}
+            };
 
             Console.ReadKey();
         }
