@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Basics
 {
+    delegate bool FilterDelegate(int n);
+
     class Program
     {
         static void Main(string[] args)
@@ -57,7 +59,7 @@ namespace Basics
             //p2.Write();
             //persons[1].Write();
 
-            var line = Console.ReadLine();
+            //var line = Console.ReadLine();
             //1. megoldás
             //var moved = StringExtension.MoveFirstToLast(line);
             //moved = StringExtension.MoveFirstToLast(moved);
@@ -66,10 +68,36 @@ namespace Basics
             //var moved = StringExtension.MoveFirstToLast(StringExtension.MoveFirstToLast(line));
 
             //3. megoldás
-            var moved = line.MoveFirstToLast().MoveFirstToLast();
-            Console.WriteLine(moved);
+            //var moved = line.MoveFirstToLast().MoveFirstToLast();
+            //Console.WriteLine(moved);
 
+            var numbers = new List<int> { 2, 3, 4, 5, 6, 7, 8 };
+            var evenNumbers = Filter(numbers, IsEven);
+            foreach (var n in evenNumbers)
+            {
+                Console.WriteLine(n);
+            }
             Console.ReadKey();
+        }
+
+        static bool IsEven(int n)
+        {
+            return n % 2 == 0;
+        }
+
+        static List<int> Filter(List<int> numbers, FilterDelegate filter)
+        {
+            var result = new List<int>();
+
+            foreach (var n in numbers)
+            {
+                if (filter(n))
+                {
+                    result.Add(n);
+                }
+            }
+
+            return result;
         }
 
         static void WritePerson(Person p)
