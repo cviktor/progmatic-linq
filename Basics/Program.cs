@@ -13,7 +13,15 @@ namespace Basics
             var x = 2;
             var line = Console.ReadLine(); //metódus visszatérési érték tárolására nem mindig preferálják, van hogy inkább ki kell írni
 
+            //var p = new Person("Lajos");
+            //p.Age = 31;
 
+            var p = new Person("Lajos")
+            {
+                Age = 31,
+                Salary = 1000
+            };
+            
 
             Console.ReadKey();
         }

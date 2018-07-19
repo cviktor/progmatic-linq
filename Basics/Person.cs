@@ -10,6 +10,7 @@ namespace Basics
     {
         public string Name { get; set; }
         public int Age { get; set; }
+        public int Salary { get; set; }
 
         public Person(string name)
         {
