@@ -38,7 +38,7 @@ namespace Basics
                 p,
                 new Person("Géza"){Age = 22, Salary = 3000}
             };
-            Console.WriteLine(persons[1].Name);
+            //Console.WriteLine(persons[1].Name);
 
             //Console.WriteLine(p.Name + " fizetés: " + p.Salary);
             //Console.WriteLine(p2.Name + " fizetés: " + p2.Salary);
@@ -48,14 +48,26 @@ namespace Basics
             //WritePerson(persons[1]);
 
             //Megegyezik az alsóval
-            PersonExtension.Write(p);
-            PersonExtension.Write(p2);
-            PersonExtension.Write(persons[1]);
-            
+            //PersonExtension.Write(p);
+            //PersonExtension.Write(p2);
+            //PersonExtension.Write(persons[1]);
+
             //Extension method hívása
-            p.Write();
-            p2.Write();
-            persons[1].Write();
+            //p.Write();
+            //p2.Write();
+            //persons[1].Write();
+
+            var line = Console.ReadLine();
+            //1. megoldás
+            //var moved = StringExtension.MoveFirstToLast(line);
+            //moved = StringExtension.MoveFirstToLast(moved);
+
+            //2. megoldás
+            //var moved = StringExtension.MoveFirstToLast(StringExtension.MoveFirstToLast(line));
+
+            //3. megoldás
+            var moved = line.MoveFirstToLast().MoveFirstToLast();
+            Console.WriteLine(moved);
 
             Console.ReadKey();
         }
