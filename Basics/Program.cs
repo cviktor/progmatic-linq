@@ -72,11 +72,18 @@ namespace Basics
             //Console.WriteLine(moved);
 
             var numbers = new List<int> { 2, 3, 4, 5, 6, 7, 8 };
-            var evenNumbers = Filter(numbers, IsEven, 4, WriteNumber);
-            foreach (var n in evenNumbers)
-            {
-                Console.WriteLine(n);
-            }
+            //Action<int> writerDel = new Action<int>(WriteNumber);
+            Action<int> writerDel = WriteNumber; //felsõ sor egyszerûsítése
+            writerDel(132423); //ez gyakorlatilag a WriteNumber(132423);
+
+            Func<int, int, bool> evenDel = IsEven;
+            bool result = evenDel(4, 3);
+            Console.WriteLine(result);
+            //var evenNumbers = Filter(numbers, IsEven, 4, writerDel);
+            //foreach (var n in evenNumbers)
+            //{
+            //    Console.WriteLine(n);
+            //}
             Console.ReadKey();
         }
 
@@ -91,9 +98,9 @@ namespace Basics
         }
 
         //FilterDelegate helyett megfelel a Func<int, bool>
-        static List<int> Filter(List<int> numbers, 
-            Func<int, int, bool> filter, 
-            int minimum, 
+        static List<int> Filter(List<int> numbers,
+            Func<int, int, bool> filter,
+            int minimum,
             Action<int> write) //delegate formába így kéne felvenni: delegate void WriteDelegate(int x);
         {
             var result = new List<int>();
